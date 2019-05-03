@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!--        Start Menu Of Movie-->
+        <add
+                id="VuDacKyAnh_Test::test"
+                title="Test"
+                module="VuDacKyAnh_Test"
+                sortOrder="51"
+                resource="VuDacKyAnh_Test::test"/>
+        <add
+                id="VuDacKyAnh_Test::title"
+                title="Manufacturer Manager"
+                module="VuDacKyAnh_Test"
+                sortOrder="20"
+                parent="VuDacKyAnh_Test::test"
+                resource="VuDacKyAnh_Test::title"
+        />
+        <add
+                id="VuDacKyAnh_Test::all"
+                title="Manufacturer Index"
+                module="VuDacKyAnh_Test"
+                sortOrder="10"
+                action="test/manufacturer"
+                resource="VuDacKyAnh_Test::all"
+                parent="VuDacKyAnh_Test::title"/>
+        <add
+                id="VuDacKyAnh_Test::info"
+                title="Manufacturer Info"
+                module="VuDacKyAnh_Test"
+                sortOrder="10"
+                action="test/manufacturer/info"
+                resource="VuDacKyAnh_Test::info"
+                parent="VuDacKyAnh_Test::title"/>
+        <!--        End Menu Of Movie-->
+    </menu>
+</config>

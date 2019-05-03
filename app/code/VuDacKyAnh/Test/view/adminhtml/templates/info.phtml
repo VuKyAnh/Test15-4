@@ -1,0 +1,105 @@
+<head>
+    <style>
+        .invi {
+            display: none;
+        }
+
+        .form {
+            width: 60%;
+            margin-left: 20%;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .form input {
+            width: 60%;
+            margin-left: 20%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+
+        }
+
+        .form select {
+            width: 60%;
+            margin-left: 20%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+            border-style: none;
+            border-bottom: solid gray 1px;
+            background: white;
+            cursor: pointer;
+
+        }
+
+        .form p {
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<form class="form">
+    <p class="select" style="cursor: pointer">Select product</p>
+    <div>
+        <select id="select">
+            <option>Select a Product</option>
+            <?php
+            $pro = $block->getOptions();
+            foreach ($pro as $item) {
+                echo "<option  value=\"" . $item->getId() . " \">" . $item->getName() . "</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="invi" id="div-body">
+    <div>
+        <p>Input Manufacturer's Name</p>
+
+        <?php
+        $values = $block->getManufacturer();
+        foreach ($values as $item) {
+            echo "<div class=\"data invi\" id=\"name-" . $item->getProduct_id() . "\"><input readonly=\"true\" value=\"" . $item->getName() . "\" /></div>";
+        }
+        ?>
+    </div>
+    <div>
+        <p>Input Manufacturer's Address</p>
+
+        <?php
+        $values = $block->getManufacturer();
+        foreach ($values as $item) {
+            echo "<div class=\"data invi\" id=\"address-" . $item->getProduct_id() . "\"><input readonly=\"true\" value=\"" . $item->getAddress() . "\" /></div>";
+        }
+        ?>
+    </div>
+    <div>
+        <p>Input Contact Phone</p>
+
+        <?php
+        $values = $block->getManufacturer();
+        foreach ($values as $item) {
+            echo "<div class=\"data invi\" id=\"phone-" . $item->getProduct_id() . "\"><input readonly=\"true\" value=\"" . $item->getContact_phone() . "\" /></div>";
+        }
+        ?>
+    </div>
+    <div>
+        <p>Input Contact Name</p>
+
+        <?php
+        $values = $block->getManufacturer();
+        foreach ($values as $item) {
+            echo "<div class=\"data invi\" id=\"contactname-" . $item->getProduct_id() . "\"><input readonly=\"true\" value=\"" . $item->getContact_name() . "\" /></div>";
+        }
+        ?>
+    </div>
+    </div>
+
+</form>
+</body>
