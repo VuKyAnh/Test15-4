@@ -1,0 +1,124 @@
+<head>
+    <style>
+        .invi {
+            display: none;
+        }
+
+        .form {
+            width: 60%;
+            margin-left: 20%;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .form input {
+            width: 60%;
+            margin-left: 20%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+
+        }
+
+        .edit{
+            width: 100px;
+            margin-left: 40%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: greenyellow;
+        }
+
+        .form select {
+            width: 60%;
+            margin-left: 20%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+            border-style: none;
+            border-bottom: solid gray 1px;
+            background: white;
+            cursor: pointer;
+
+        }
+
+        .form p {
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<form class="form">
+    <p class="select" style="cursor: pointer">Select member</p>
+    <div>
+        <select id="select">
+            <option>Select a member</option>
+            <?php
+            $mem = $block->getOptions();
+            foreach ($mem as $item) {
+                echo "<option  value=\"" . $item->getMember_id() . " \">" . $item->getName() . "</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="invi" id="div-body">
+        <div>
+            <p>Input Member's Name</p>
+
+            <?php
+            $values = $block->getOptions();
+            foreach ($values as $item) {
+                echo "<div class=\"data invi\" id=\"name-" . $item->getMember_id() . "\"><input value=\"" . $item->getName() . "\" /></div>";
+            }
+            ?>
+        </div>
+        <div>
+            <p>Input Member's Address</p>
+
+            <?php
+            $values = $block->getOptions();
+            foreach ($values as $item) {
+                echo "<div class=\"data invi\" id=\"address-" . $item->getMember_id() . "\"><input value=\"" . $item->getAddress() . "\" /></div>";
+            }
+            ?>
+        </div>
+        <div>
+            <p>Input Member's Phone</p>
+
+            <?php
+            $values = $block->getOptions();
+            foreach ($values as $item) {
+                echo "<div class=\"data invi\" id=\"phone-" . $item->getMember_id() . "\"><input value=\"" . $item->getPhone() . "\" /></div>";
+            }
+            ?>
+        </div>
+        <div>
+            <p>Created at</p>
+
+            <?php
+            $values = $block->getOptions();
+            foreach ($values as $item) {
+                echo "<div class=\"data invi\" id=\"createdat-" . $item->getMember_id() . "\"><input readonly=\"true\" value=\"" . $item->getCreated_at() . "\" /></div>";
+            }
+            ?>
+        </div>
+        <div>
+            <p>Updated at</p>
+
+            <?php
+            $values = $block->getOptions();
+            foreach ($values as $item) {
+                echo "<div class=\"data invi\" id=\"updatedat-" . $item->getMember_id() . "\"><input readonly=\"true\" value=\"" . $item->getUpdated_at() . "\" /></div>";
+            }
+            ?>
+        </div>
+    </div>
+
+</form>
+</body>
