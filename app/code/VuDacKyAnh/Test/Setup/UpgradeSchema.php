@@ -7,15 +7,15 @@ use	Magento\Framework\Setup\SchemaSetupInterface;
 class UpgradeSchema	implements	UpgradeSchemaInterface	{
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        if (version_compare($context->getVersion(), '2.0.8') < 0) {
+        if (version_compare($context->getVersion(), '2.1.0') < 0) {
             $installer = $setup;
             $installer->startSetup();
             $connection = $installer->getConnection();
 
             //Install	new	database	table
-            $table = $installer->getConnection()->newTable($installer->getTable('magenest_part_time')
+            $table = $installer->getConnection()->newTable($installer->getTable('manufacturer_entity')
             )->addColumn(
-                'member_id',
+                'entity_id',
                 Table::TYPE_INTEGER,
                 null,
                 ['identity'=>true,'unsigned'=>true,'nullable'=>false,'primary'=>true]
@@ -23,49 +23,42 @@ class UpgradeSchema	implements	UpgradeSchemaInterface	{
                 ->addColumn(
                     'name',
                     Table::TYPE_TEXT,
-                    255,
-                    ['nullable'=>false]
+                    255
                 )
                 ->addColumn(
-                    'address',
+                    'enabled',
+                    Table::TYPE_SMALLINT,
+                    1
+                )
+                ->addColumn(
+                    'address_street',
                     Table::TYPE_TEXT,
-                    255,
-                    ['nullable'=>false]
+                    255
                 )
                 ->addColumn(
-                    'phone',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['nullable'=>false]
+                    'address_city',
+                    Table::TYPE_TEXT,
+                    100
                 )
                 ->addColumn(
-                    'created_at',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-                    null, [
-                    'nullable' => false,
-                    'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT
-                ],
-                    'Created	at'
+                    'address_country',
+                    Table::TYPE_TEXT,
+                    5
                 )
                 ->addColumn(
-                    'updated_at',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-                    null, [
-                    'nullable' => false,
-                    'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT
-                ],
-                    'Updated	at'
+                    'contact_name',
+                    Table::TYPE_TEXT,
+                    100
                 )
                 ->addColumn(
-                    'customer_id',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                    null, [
-                    'nullable' => false,
-                ]
-                )->addIndex(
-                $installer->getIdxName('magenest_part_time',
-                    ['member_id']),
-                ['member_id']
+                    'contact_phone',
+                    Table::TYPE_TEXT,
+                    20
+                )
+                ->addIndex(
+                $installer->getIdxName('manufacturer_entity',
+                    ['entity_id']),
+                ['entity_id']
             )->setComment(
                 'Cron	Schedule'
             );

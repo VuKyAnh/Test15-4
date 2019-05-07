@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<!--    Manufacturer UI-->
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -17,6 +18,7 @@
         </arguments>
     </type>
 
+<!--    Member UI-->
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -30,6 +32,22 @@
             <argument name="eventPrefix" xsi:type="string">test_member_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">member_grid_collection</argument>
             <argument name="resourceModel" xsi:type="string">VuDacKyAnh\Test\Model\ResourceModel\Member</argument>
+        </arguments>
+    </type>
+<!-- Manufacturer Entity UI-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="test_manuentity_listing_data_source" xsi:type="string">VuDacKyAnh\Test\Model\ResourceModel\ManuEntity\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="VuDacKyAnh\Test\Model\ResourceModel\ManuEntity\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">manufacturer_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">test_manuentity_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">manuentity_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">VuDacKyAnh\Test\Model\ResourceModel\ManuEntity</argument>
         </arguments>
     </type>
 
