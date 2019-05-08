@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <!--        Start Menu Of Movie-->
+        <!--        Start Menu Of Manufacturer-->
         <add
                 id="VuDacKyAnh_Test::test"
                 title="Test"
@@ -33,6 +33,23 @@
                 action="test/manufacturer/info"
                 resource="VuDacKyAnh_Test::info"
                 parent="VuDacKyAnh_Test::title"/>
-        <!--        End Menu Of Movie-->
+        <!--        End Menu Of Manufacturer-->
+
+        <add
+                id="VuDacKyAnh_Test::member"
+                title="Member Manager"
+                module="VuDacKyAnh_Test"
+                sortOrder="20"
+                parent="VuDacKyAnh_Test::test"
+                resource="VuDacKyAnh_Test::member"
+        />
+        <add
+                id="VuDacKyAnh_Test::all_member"
+                title="Member Index"
+                module="VuDacKyAnh_Test"
+                sortOrder="10"
+                action="test/member"
+                resource="VuDacKyAnh_Test::all_member"
+                parent="VuDacKyAnh_Test::member"/>
     </menu>
 </config>
